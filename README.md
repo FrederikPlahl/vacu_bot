@@ -16,3 +16,25 @@ Then build it:
 cd ..
 catkin_make
 ``
+
+### Launch:
+
+Launch model with these commands after sourcing your Workspace:
+
+``bash
+roslaunch vacu_bot display_vacu_bot.launch
+``
+
+or
+
+
+``bash
+roslaunch vacu_bot simulate_vacu_bot.launch
+``
+
+or
+
+
+``bash
+roslaunch vacu_bot simulate_vacu_bot_nav.launch
+``
