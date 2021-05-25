@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+
+<robot name="vacu_bot" xmlns:xacro="http://ros.org/wiki/xacro" >
+
+  <xacro:include filename="$(find vacu_bot)/urdf/simu_gazebo_config.xacro"/>
+
+
+<!--############################################ Inertial Macros ###################################-->
+
+  <xacro:macro name="cylinder_inertial" params="radius length mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0"
+        iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0"
+        izz="${0.5 * mass * radius * radius}" />
+    </inertial>
+  </xacro:macro>
+
+
+
+  <xacro:macro name="box_inertial" params="x y z mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.0833333 * mass * (y*y + z*z)}" ixy="0.0" ixz="0.0"
+        iyy="${0.0833333 * mass * (x*x + z*z)}" iyz="0.0"
+        izz="${0.0833333 * mass * (x*x + y*y)}" />
+    </inertial>
+  </xacro:macro>
+
+<!--############################################ robot defintion ###################################-->
+
+
+  <link name="base_footprint">
+    <visual>
+      <geometry>
+        <box size="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.5"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.4" radius="0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.5" length="0.3" mass="30">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+
+  <link name="front_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8 0.8 0.8 1" />
+      </material>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
+        <origin xyz="0.0 0.2 0.0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+  
+  <link name="front_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8 0.8 0.8 1" />
+      </material>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
+        <origin xyz="0.0 0.2 0.0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+
+  <link name="rear_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8 0.8 0.8 1" />
+      </material>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
+        <origin xyz="0.2 -0.2 0.0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+  
+  <link name="rear_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8 0.8 0.8 1" />
+      </material>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <origin rpy="1.57075 0 1.57075" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
+        <origin xyz="-0.2 -0.2 0.0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>  
+
+<!--############################################ sensor defintions ###################################-->
+
+   <link name="lidar">
+    <visual>
+      <geometry>
+         <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7 0 0 1" />
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+         <cylinder length="0.2" radius="0.05"/>
+      </geometry>
+      <origin rpy="0 0 0.4" xyz="0 0 0"/>
+    </collision>
+    <xacro:cylinder_inertial radius="0.05" length="0.1" mass="0.5">
+        <origin xyz="0.0 0.0 0.2" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+
+<!--############################################ joint defintions ###################################-->
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.15"/>
+  </joint>
+
+  <joint name="base_to_front_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0.35 -0.275 -0.15"/>
+  </joint>
+
+  <joint name="base_to_front_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="-0.35 -0.275 -0.15"/>
+  </joint>
+
+  <joint name="base_to_rear_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="-0.35 0.275 -0.15"/>
+  </joint>
+
+  <joint name="base_to_rear_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="0.35 0.275 -0.15"/>
+  </joint>
+
+  <joint name="base_to_lidar" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar"/>
+    <origin xyz="0 0 0.175"/>
+  </joint>
+
+<!--############################################ Aufruf von Makros ###################################-->
+ <!--xacro:holonomic_steering/-->
+ <xacro:skid_steer_drive_controller/>
+ <xacro:gazebo_ros_controller/>
+ <xacro:gazebo_lidar/>
+
+</robot>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="model" default="$(find vacu_bot)/urdf/vacu_bot.urdf.xacro"/>
+  <arg name="rvizconfig" default="$(find vacu_bot)/rviz/vacu_bot_rviz_config.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <include file="$(find gazebo_ros)/launch/willowgarage_world.launch"/>
+
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -x 8 -y -8 -model vacu_bot" respawn="false" output="screen" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true"  />
+
+  <node name="map_server" pkg="map_server" type="map_server"
+        args="$(find mapping)/maps/willow.yaml"/>
+        
+  <include file="$(find amcl)/examples/amcl_diff.launch"/>
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find vacu_bot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find vacu_bot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find vacu_bot)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find vacu_bot)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find vacu_bot)/config/base_local_planner_params.yaml" command="load" />
+  </node>
+
+</launch>
