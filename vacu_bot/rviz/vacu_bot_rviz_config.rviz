@@ -74,7 +74,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        front_wheel:
+        front_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_right_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -109,7 +114,9 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        front_wheel:
+        front_left_wheel:
+          Value: true
+        front_right_wheel:
           Value: true
         lidar:
           Value: true
@@ -125,7 +132,9 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
-            front_wheel:
+            front_left_wheel:
+              {}
+            front_right_wheel:
               {}
             lidar:
               {}
