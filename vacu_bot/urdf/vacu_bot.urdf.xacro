@@ -84,7 +84,7 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0"/>
     </collision>
     <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
-        <origin xyz="0.0 0.2 0.0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:cylinder_inertial>
   </link>
   
@@ -107,7 +107,7 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0"/>
     </collision>
     <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
-        <origin xyz="0.0 0.2 0.0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:cylinder_inertial>
   </link>
 
@@ -130,7 +130,7 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0"/>
     </collision>
     <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
-        <origin xyz="0.2 -0.2 0.0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:cylinder_inertial>
   </link>
   
@@ -153,7 +153,7 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0"/>
     </collision>
     <xacro:cylinder_inertial radius="0.05" length="0.1" mass="1">
-        <origin xyz="-0.2 -0.2 0.0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:cylinder_inertial>
   </link>  
 
@@ -175,10 +175,10 @@
       <geometry>
          <cylinder length="0.2" radius="0.05"/>
       </geometry>
-      <origin rpy="0 0 0.4" xyz="0 0 0"/>
+      <origin rpy="0 0 0.0" xyz="0 0 0"/>
     </collision>
     <xacro:cylinder_inertial radius="0.05" length="0.1" mass="0.5">
-        <origin xyz="0.0 0.0 0.2" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:cylinder_inertial>
   </link>
 
