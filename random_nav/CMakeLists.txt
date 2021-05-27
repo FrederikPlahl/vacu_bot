@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(vacu_bot)
+project(random_nav)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  urdf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -105,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES vacu_bot
+#  LIBRARIES random_nav
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -123,7 +122,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/vacu_bot.cpp
+#   src/${PROJECT_NAME}/random_nav.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +133,9 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/vacu_bot_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/random_nav_node.cpp)
+add_executable(range_checker src/range_checker.cpp)
+add_executable(rc_tester src/rc_tester.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -150,7 +151,8 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-
+target_link_libraries(range_checker ${catkin_LIBRARIES})
+target_link_libraries(rc_tester ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -199,7 +201,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_vacu_bot.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_random_nav.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
