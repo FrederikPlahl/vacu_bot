@@ -23,7 +23,7 @@ void rangeCheck(const sensor_msgs::LaserScan scan_msg)
     ROS_INFO("Careful! There is a wall.");
 
     twist_msg.linear.x = -1;
-    twist_msg.angular.x = -0.5;
+    twist_msg.angular.z = -0.5;
 
   }
   else
