@@ -13,24 +13,26 @@ void rangeCheck(const sensor_msgs::LaserScan scan_msg)
   ros::Publisher pub = node.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
 
 
-  float max_range = 1.0;
-  int len = sizeof(scan_msg.ranges);
+  float max_range = 1.7;
+  //int len = sizeof(scan_msg.ranges)/sizeof(scan_msg.*ranges);
+  int scan_width_end = 420; //0,5° Steps starting at the back
+  int scan_width_start = 300;
 
-  for (int i = 0; i < len; i++){
+  for (int i = scan_width_start; i < scan_width_end; i++){
     if (scan_msg.ranges[i] <= max_range)
     {
       //rückwärts und drehen
       
-      ROS_INFO("Careful! There is a wall.");
+      ROS_INFO("Careful! There is a wall.%i", i);
 
-      twist_msg.linear.x = -1;
-      twist_msg.angular.z = -0.5;
+      twist_msg.linear.x = -0.3;
+      twist_msg.angular.z = -3;
     }
     else
     {
       //geradeaus fahren
 
-      ROS_INFO("No wall! I'm going straight.");
+      ROS_INFO("No wall! I'm going straight.%i", i);
 
       twist_msg.linear.x = 0.3;    
     }
