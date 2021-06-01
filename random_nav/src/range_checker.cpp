@@ -15,8 +15,8 @@ void rangeCheck(const sensor_msgs::LaserScan scan_msg)
 
   float max_range = 1.7;
   //int len = sizeof(scan_msg.ranges)/sizeof(scan_msg.*ranges);
-  int scan_width_end = 410; //0,5° Steps starting at the back
-  int scan_width_start = 310;
+  int scan_width_end = 400; //0,5° Steps starting at the back
+  int scan_width_start = 320;
 
   for (int i = scan_width_start; i < scan_width_end; i++){
     if (i<(scan_width_start+scan_width_end)/2){
