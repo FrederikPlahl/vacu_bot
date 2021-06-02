@@ -49,7 +49,7 @@ sudo cp <path_to_unzipped_small_house>/small_house.world /usr/share/gazebo-9/wor
 To edit the world open:
 
 ```bash
-sudo gedit /usr/share/gazebo-9/worlds/small_house.cpp
+sudo gedit /usr/share/gazebo-9/worlds/small_house.world
 ```
 
 [worlds]: https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps
