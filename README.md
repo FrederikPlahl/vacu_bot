@@ -42,7 +42,7 @@ roslaunch vacu_bot simulate_vacu_bot_nav.launch
 Clone [this][worlds] in your to your PC and extract ``Dataset-of-Gazebo-Worlds-Models-and-Maps/worlds/small_house/small_house.zip``. Now copy the models of the and the world in your gazebo folder.
 
 ```bash
-sudo cp <path_to_unzipped_small_house>/models/. /usr/share/gazebo-9/models
+sudo cp -r <path_to_unzipped_small_house>/models/. /usr/share/gazebo-9/models
 sudo cp <path_to_unzipped_small_house>/small_house.world /usr/share/gazebo-9/worlds
 ```
 
