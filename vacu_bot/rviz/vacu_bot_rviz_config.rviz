@@ -74,6 +74,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         front_left_wheel:
           Alpha: 1
           Show Axes: false
@@ -114,6 +119,8 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
+        camera_link:
+          Value: true
         front_left_wheel:
           Value: true
         front_right_wheel:
@@ -132,6 +139,8 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
+            camera_link:
+              {}
             front_left_wheel:
               {}
             front_right_wheel:
@@ -177,7 +186,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.05
       Style: Flat Squares
       Topic: /scan
       Unreliable: false
@@ -188,7 +197,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:

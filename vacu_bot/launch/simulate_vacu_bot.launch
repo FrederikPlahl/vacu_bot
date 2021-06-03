@@ -6,7 +6,8 @@
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <include file="$(find gazebo_ros)/launch/willowgarage_world.launch"/>
+  <!--<include file="$(find gazebo_ros)/launch/willowgarage_world.launch"/>-->
+  <include file="$(find vacu_bot)/launch/small_house_world.launch"/>
 
  
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -x 8 -y -8 -model vacu_bot" respawn="false" output="screen" />
